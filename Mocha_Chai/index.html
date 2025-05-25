@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+
+<script src="https://unpkg.com/mocha/mocha.js"></script>
+<script src="https://unpkg.com/chai@4.3.4/chai.js"></script>
+  <script>
+    mocha.setup("bdd");
+    const expect = chai.expect;
+
+
+      function capitalizeText(input) {
+     if (typeof input !== "string"){
+    throw new TypeError("parameter should be string")
+  };
+  return input.toUpperCase();
+    }
+
+    function createArray(number) {
+       const myArray = Array.from(Array(number).keys());
+  return myArray;
+    }
+
+
+    describe("capitalizeText in browser", function () {
+    it("function takes a string and returns it capitalized", function () {
+    expect(capitalizeText("iti")).to.equal("ITI");
+  });
+
+
+     it("should throw a TypeError if input is not a string", function () {
+    expect(function () {
+        capitalizeText(6)
+    }).to.throw(TypeError, "parameter should be string");
+  });
+    });
+
+    mocha.run();
+  </script>
+</body>
+</html>
